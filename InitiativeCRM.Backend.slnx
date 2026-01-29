@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Services/LeadService/Lead.API/Lead.API.csproj">
+    <BuildDependency Project="Services/LeadService/Lead.Infrastructure/Lead.Infrastructure.csproj" />
+  </Project>
+  <Project Path="Services/LeadService/Lead.Application/Lead.Application.csproj" />
+  <Project Path="Services/LeadService/Lead.Database/Lead.Database.csproj" />
+  <Project Path="Services/LeadService/Lead.Domain/Lead.Domain.csproj" />
+  <Project Path="Services/LeadService/Lead.Infrastructure/Lead.Infrastructure.csproj" />
+</Solution>
