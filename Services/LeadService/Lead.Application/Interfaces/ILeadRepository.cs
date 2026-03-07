@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Lead.Application.DTOs.Request;
+using Lead.Application.DTOs.Response;
 using Lead.Domain.Entities;
+using Shared.Models.Utilities.Paging;
 
+namespace Lead.Application.Interfaces;
 
-namespace Lead.Application.Interfaces
+public interface ILeadRepository : IRepositoryBase<Leads>
 {
-    public interface ILeadRepository
-    {
-        Task AddAsync(Leads lead);
-        Task<List<Leads>> GetAllAsync();
-        Task SaveChangesAsync();
-    }
+    Task<PagingResponseDto<LeadResponse>> SearchAsync(
+        LeadSearchRequest<object> request, 
+        CancellationToken cancellationToken = default);
+
+    Task<Leads> GetLeadById(int id, CancellationToken cancellationToken = default);
 }

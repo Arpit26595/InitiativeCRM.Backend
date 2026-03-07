@@ -1,21 +1,92 @@
-﻿namespace Lead.Domain.Entities;
+﻿using Lead.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Lead.Domain.Entities;
+[Table("Leads")]
 
 public class Leads
+
 {
-    public Guid Id { get; private set; }
-    public string Name { get; private set; } = null!;
-    public string Email { get; private set; } = null!;
-    public DateTime CreatedAt { get; private set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int LeadId { get; set; }
 
-    private Leads() { } // EF
+    public DateTime DateOpened { get; set; } = DateTime.UtcNow;
 
-    public Leads(string name, string email)
-    {
-        Id = Guid.NewGuid();
-        Name = name;
-        Email = email;
-        CreatedAt = DateTime.UtcNow;
-    }
+    // ⭐ Store as string in DB, use enum in code
+    [StringLength(30)]
+    public LeadStatus Status { get; set; } = LeadStatus.New;
+
+    [StringLength(30)]
+    public LeadSource LeadSource { get; set; } = LeadSource.Other;
+
+    [StringLength(30)]
+    public LeadType LeadType { get; set; } = LeadType.NewBuild;
+
+    [StringLength(30)]
+    public string FirstName { get; set; }
+
+    [StringLength(30)]
+    public string LastName { get; set; }
+
+    [StringLength(20)]
+    [Phone]
+    public string Phone { get; set; }
+
+    [StringLength(250)]
+    [EmailAddress]
+    public string Email { get; set; }
+
+    [StringLength(60)]
+    public string Company { get; set; }
+
+    [StringLength(60)]
+    public string Address { get; set; }
+
+    [StringLength(30)]
+    public string City { get; set; }
+
+    [StringLength(2)]
+    public string State { get; set; }
+
+    [StringLength(10)]
+    public string ZipCode { get; set; }
+
+    [StringLength(100)]
+    public string Description { get; set; }
+
+    public string Details { get; set; }
+
+    public decimal EstimatedValue { get; set; }
+
+    [StringLength(10)]
+    public int Probability { get; set; } // Store as int (0-100)
+
+    public DateTime? ExpectedCloseDate { get; set; }
+
+    public int AssignedTo { get; set; } = 0;
+
+    public DateTime ConvertedDate { get; set; } = DateTime.UtcNow;
+
+    public int Attachments { get; set; } = 0;
+
+    // Computed Properties
+    [NotMapped]
+    public string FullName => $"{FirstName} {LastName}".Trim();
+
+    [NotMapped]
+    public string FullAddress =>
+        $"{Address}, {City}, {State} {ZipCode}".Trim().TrimEnd(',');
+
+
+
+    [NotMapped]
+    public bool IsActive => Status != LeadStatus.Lost && Status != LeadStatus.Won;
+
+    [NotMapped]
+    public int DaysOpen => (DateTime.UtcNow - DateOpened).Days;
 }
+
 
 

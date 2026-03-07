@@ -1,4 +1,4 @@
-﻿namespace Lead.Domain
+﻿namespace Shared.Models
 {
     public class Class1
     {

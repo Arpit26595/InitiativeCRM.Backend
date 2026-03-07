@@ -4,7 +4,6 @@ using Lead.Infrastructure.Repositories;  // LeadRepository
 using Microsoft.EntityFrameworkCore;     // UseSqlServer
 using Microsoft.Extensions.Configuration; // GetConnectionString
 using Microsoft.Extensions.DependencyInjection; // AddDbContext, AddScoped
-using Microsoft.OpenApi.MicrosoftExtensions; // (if needed for Swagger, otherwise can be removed)
 
 namespace Lead.Infrastructure;
 
@@ -13,7 +12,7 @@ public static class Program
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         // Get the connection string from appsettings.json
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        var connectionString = configuration.GetConnectionString("Development");
 
         // Register EF Core DbContext with SQL Server
         services.AddDbContext<LeadDbContext>(options =>

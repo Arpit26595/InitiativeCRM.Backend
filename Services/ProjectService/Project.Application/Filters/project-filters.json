@@ -1,0 +1,457 @@
+{
+  "leadFilters": [
+    {
+      "id": "FirstName",
+      "label": "First Name",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "LastName",
+      "label": "Last Name",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Email",
+      "label": "Email",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Phone",
+      "label": "Phone Number",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Company",
+      "label": "Company",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Status",
+      "label": "Lead Status",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "New",
+          "value": "New"
+        },
+        {
+          "label": "Qualified",
+          "value": "Qualified"
+        },
+        {
+          "label": "Disqualified",
+          "value": "Disqualified"
+        },
+        {
+          "label": "Proposal",
+          "value": "Proposal"
+        },
+        {
+          "label": "Negotiation",
+          "value": "Negotiation"
+        },
+        {
+          "label": "Won",
+          "value": "Won"
+        },
+        {
+          "label": "Lost",
+          "value": "Lost"
+        },
+        {
+          "label": "Contact Attempted",
+          "value": "ContactAttempted"
+        },
+        {
+          "label": "Contact Made",
+          "value": "ContactMade"
+        },
+        {
+          "label": "Nurturing",
+          "value": "Nurturing"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "LeadSource",
+      "label": "Lead Source",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Referral",
+          "value": "Referral"
+        },
+        {
+          "label": "Website",
+          "value": "Website"
+        },
+        {
+          "label": "Ad",
+          "value": "Ad"
+        },
+        {
+          "label": "Trade Show",
+          "value": "TradeShow"
+        },
+        {
+          "label": "Cold Call",
+          "value": "ColdCall"
+        },
+        {
+          "label": "Social Media",
+          "value": "SocialMedia"
+        },
+        {
+          "label": "Email",
+          "value": "Email"
+        },
+        {
+          "label": "Direct Mail",
+          "value": "DirectMail"
+        },
+        {
+          "label": "Partner Referral",
+          "value": "PartnerReferral"
+        },
+        {
+          "label": "Other",
+          "value": "Other"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "LeadType",
+      "label": "Lead Type",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Commercial",
+          "value": "Commercial"
+        },
+        {
+          "label": "Residential",
+          "value": "Residential"
+        },
+        {
+          "label": "Remodel",
+          "value": "Remodel"
+        },
+        {
+          "label": "New Build",
+          "value": "NewBuild"
+        },
+        {
+          "label": "Renovation",
+          "value": "Renovation"
+        },
+        {
+          "label": "Maintenance",
+          "value": "Maintenance"
+        },
+        {
+          "label": "Consulting",
+          "value": "Consulting"
+        },
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "City",
+      "label": "City",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "State",
+      "label": "State",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "ZipCode",
+      "label": "Zip Code",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "EstimatedValue",
+      "label": "Estimated Value",
+      "type": "decimal",
+      "controlType": "number",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "EstimatedValueRange",
+      "label": "Estimated Value Range",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Under $10,000",
+          "value": "0-10000"
+        },
+        {
+          "label": "$10,000 - $50,000",
+          "value": "10000-50000"
+        },
+        {
+          "label": "$50,000 - $100,000",
+          "value": "50000-100000"
+        },
+        {
+          "label": "$100,000 - $500,000",
+          "value": "100000-500000"
+        },
+        {
+          "label": "Over $500,000",
+          "value": "500000+"
+        }
+      ],
+      "operation": "Between",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Probability",
+      "label": "Probability (%)",
+      "type": "number",
+      "controlType": "number",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "ProbabilityRange",
+      "label": "Probability Range",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Low (0-25%)",
+          "value": "0-25"
+        },
+        {
+          "label": "Medium (26-50%)",
+          "value": "26-50"
+        },
+        {
+          "label": "High (51-75%)",
+          "value": "51-75"
+        },
+        {
+          "label": "Very High (76-100%)",
+          "value": "76-100"
+        }
+      ],
+      "operation": "Between",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "AssignedTo",
+      "label": "Assigned To",
+      "type": "number",
+      "controlType": "autocomplete",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "DateOpened",
+      "label": "Date Opened",
+      "type": "date",
+      "controlType": "date",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "DateOpenedRange",
+      "label": "Date Opened Range",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Today",
+          "value": "today"
+        },
+        {
+          "label": "This Week",
+          "value": "thisWeek"
+        },
+        {
+          "label": "This Month",
+          "value": "thisMonth"
+        },
+        {
+          "label": "Last 30 Days",
+          "value": "last30Days"
+        },
+        {
+          "label": "Last 90 Days",
+          "value": "last90Days"
+        }
+      ],
+      "operation": "Between",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "ExpectedCloseDate",
+      "label": "Expected Close Date",
+      "type": "date",
+      "controlType": "date",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "IsActive",
+      "label": "Is Active",
+      "type": "boolean",
+      "controlType": "radio",
+      "value": "",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "true"
+        },
+        {
+          "label": "No",
+          "value": "false"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "DaysOpen",
+      "label": "Days Open",
+      "type": "number",
+      "controlType": "number",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "DaysOpenRange",
+      "label": "Days Open Range",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "0-7 days",
+          "value": "0-7"
+        },
+        {
+          "label": "8-30 days",
+          "value": "8-30"
+        },
+        {
+          "label": "31-60 days",
+          "value": "31-60"
+        },
+        {
+          "label": "61-90 days",
+          "value": "61-90"
+        },
+        {
+          "label": "Over 90 days",
+          "value": "90+"
+        }
+      ],
+      "operation": "Between",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "HasAttachments",
+      "label": "Has Attachments",
+      "type": "boolean",
+      "controlType": "radio",
+      "value": "",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "true"
+        },
+        {
+          "label": "No",
+          "value": "false"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Description",
+      "label": "Description",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    }
+  ]
+}
