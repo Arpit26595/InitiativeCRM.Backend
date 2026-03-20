@@ -1,0 +1,227 @@
+{
+  "companyFilters": [
+    {
+      "id": "CompanyName",
+      "label": "Company Name",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Type",
+      "label": "Company Type",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Customer",
+          "value": "Customer"
+        },
+        {
+          "label": "Subcontractor",
+          "value": "Subcontractor"
+        },
+        {
+          "label": "Vendor",
+          "value": "Vendor"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "AND"
+    },
+    {
+      "id": "Status",
+      "label": "Status",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Active",
+          "value": "Active"
+        },
+        {
+          "label": "Inactive",
+          "value": "Inactive"
+        },
+        {
+          "label": "Out of Business",
+          "value": "OutOfBusiness"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "AND"
+    },
+    {
+      "id": "Phone",
+      "label": "Phone",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "City",
+      "label": "City",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "State",
+      "label": "State",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Eq",
+      "logicalOperation": "AND"
+    },
+    {
+      "id": "Zip",
+      "label": "Zip Code",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "PaymentTerms",
+      "label": "Payment Terms",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Net 10",
+          "value": "Net10"
+        },
+        {
+          "label": "Net 15",
+          "value": "Net15"
+        },
+        {
+          "label": "Net 30",
+          "value": "Net30"
+        },
+        {
+          "label": "Net 45",
+          "value": "Net45"
+        },
+        {
+          "label": "Net 60",
+          "value": "Net60"
+        },
+        {
+          "label": "Net 90",
+          "value": "Net90"
+        },
+        {
+          "label": "COD",
+          "value": "COD"
+        },
+        {
+          "label": "Due on Receipt",
+          "value": "DueOnReceipt"
+        },
+        {
+          "label": "Prepaid",
+          "value": "Prepaid"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "AND"
+    },
+    {
+      "id": "IsPreferredVendor",
+      "label": "Preferred Vendor",
+      "type": "boolean",
+      "controlType": "radio",
+      "value": "",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "true"
+        },
+        {
+          "label": "No",
+          "value": "false"
+        }
+      ],
+      "operation": "Eq",
+      "logicalOperation": "AND"
+    },
+    {
+      "id": "BondingCompany",
+      "label": "Bonding Company",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Website",
+      "label": "Website",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "BondingLimitRange",
+      "label": "Bonding Limit Range",
+      "type": "string",
+      "controlType": "dropdown",
+      "value": "",
+      "options": [
+        {
+          "label": "Under $100K",
+          "value": "0-100000"
+        },
+        {
+          "label": "$100K - $500K",
+          "value": "100000-500000"
+        },
+        {
+          "label": "$500K - $1M",
+          "value": "500000-1000000"
+        },
+        {
+          "label": "$1M - $5M",
+          "value": "1000000-5000000"
+        },
+        {
+          "label": "Over $5M",
+          "value": "5000000+"
+        }
+      ],
+      "operation": "Between",
+      "logicalOperation": "OR"
+    },
+    {
+      "id": "Notes",
+      "label": "Notes",
+      "type": "string",
+      "controlType": "text",
+      "value": "",
+      "options": [],
+      "operation": "Contains",
+      "logicalOperation": "OR"
+    }
+  ]
+}

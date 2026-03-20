@@ -128,4 +128,31 @@ public class LeadController : ControllerBase
             message: "Lead retrieved successfully"
         ));
     }
+
+    /// <summary>
+    /// Get dynamic filter definitions for companies
+    /// </summary>
+    [HttpGet("filters")]
+    [ProducesResponseType(typeof(ResponseModel), 200)]
+    public IActionResult GetFilterDefinitions()
+    {
+        try
+        {
+            var filtersPath = Path.Combine(AppContext.BaseDirectory, "Filters", "lead-filters.json");
+            var json = System.IO.File.ReadAllText(filtersPath);
+            var filters = System.Text.Json.JsonSerializer.Deserialize<object>(json);
+
+            return Ok(ResponseHelper.CreateSuccessResponse(
+                filters,
+                message: "Company filter definitions retrieved"
+            ));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ResponseHelper.CreateErrorResponse(
+                System.Net.HttpStatusCode.BadRequest,
+                new Exception($"Error loading filters: {ex.Message}")
+            ));
+        }
+    }
 }

@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Project.Domain.Entities
 {
     [Table("Projects")]
-
     public class Projects
     {
 

@@ -20,9 +20,13 @@ builder.Services.AddControllers()
     });
 
 builder.Services.AddAutoMapper(typeof(Lead.Application.Mappings.MappingProfile).Assembly);
+
 // ⭐ Register Infrastructure Layer (DbContext + Repositories)
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddScoped<ILeadService, LeadService>();
+builder.Services.AddScoped<ILeadNoteService, LeadNoteService>();
+builder.Services.AddScoped<ILeadActivityService, LeadActivityService>();
+builder.Services.AddScoped<ILeadDocumentService, LeadDocumentService>();
 
 // ✅ Add CORS - Allow specific origins
 builder.Services.AddCors(options =>
@@ -58,26 +62,8 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+Console.WriteLine($"Environment: {app.Environment.EnvironmentName}");
 
-// ⭐ Apply migrations on startup (Development only)
-if (app.Environment.IsDevelopment())
-{
-    using (var scope = app.Services.CreateScope())
-    {
-        var services = scope.ServiceProvider;
-        try
-        {
-            var context = services.GetRequiredService<LeadDbContext>();
-            await context.Database.MigrateAsync();
-            Console.WriteLine("✅ Database migrations applied successfully");
-        }
-        catch (Exception ex)
-        {
-            var logger = services.GetRequiredService<ILogger<Program>>();
-            logger.LogError(ex, "❌ An error occurred while migrating the database");
-        }
-    }
-}
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())

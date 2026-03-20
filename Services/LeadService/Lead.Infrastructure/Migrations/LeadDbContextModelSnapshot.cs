@@ -22,6 +22,268 @@ namespace Lead.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Lead.Domain.Entities.LeadActivity", b =>
+                {
+                    b.Property<int>("LeadActivityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LeadActivityId"));
+
+                    b.Property<DateTime>("ActivityDate")
+                        .HasColumnType("datetime2")
+                        .HasComment("Date and time when the activity occurred or is scheduled");
+
+                    b.Property<string>("ActivityType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Type of activity: Call, Email, Meeting, Task, etc.");
+
+                    b.Property<int?>("AssignedToUserId")
+                        .HasColumnType("int")
+                        .HasComment("User ID assigned to this activity");
+
+                    b.Property<int>("CreatedBy")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("User ID who created the note");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("datetime2")
+                        .HasComment("Due date for tasks or follow-ups");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasComment("Whether the note is deleted or not");
+
+                    b.Property<int>("LeadId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Priority")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Status: Planned, Completed, Cancelled, etc.");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("UpdatedBy")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("User ID who update the note");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()")
+                        .HasComment("Last modified date");
+
+                    b.HasKey("LeadActivityId");
+
+                    b.HasIndex("ActivityDate")
+                        .HasDatabaseName("IX_LeadActivities_ActivityDate");
+
+                    b.HasIndex("AssignedToUserId")
+                        .HasDatabaseName("IX_LeadActivities_AssignedToUserId");
+
+                    b.HasIndex("DueDate")
+                        .HasDatabaseName("IX_LeadActivities_DueDate");
+
+                    b.HasIndex("LeadId")
+                        .HasDatabaseName("IX_LeadActivities_LeadId");
+
+                    b.HasIndex("Status")
+                        .HasDatabaseName("IX_LeadActivities_Status");
+
+                    b.ToTable("LeadActivities", (string)null);
+                });
+
+            modelBuilder.Entity("Lead.Domain.Entities.LeadDocument", b =>
+                {
+                    b.Property<int>("DocumentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DocumentId"));
+
+                    b.Property<int>("CreatedBy")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("User ID who created the note");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasComment("Physical or cloud storage path");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint")
+                        .HasComment("File size in bytes");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("MIME type or file extension");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasComment("Whether the note is deleted or not");
+
+                    b.Property<int>("LeadId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UpdatedBy")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("User ID who update the note");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()")
+                        .HasComment("Last modified date");
+
+                    b.Property<int>("UploadedByUserId")
+                        .HasColumnType("int")
+                        .HasComment("User ID who uploaded the document");
+
+                    b.Property<DateTime>("UploadedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.HasKey("DocumentId");
+
+                    b.HasIndex("FileName")
+                        .HasDatabaseName("IX_LeadDocuments_FileName");
+
+                    b.HasIndex("FileType")
+                        .HasDatabaseName("IX_LeadDocuments_FileType");
+
+                    b.HasIndex("IsDeleted")
+                        .HasDatabaseName("IX_LeadDocuments_IsDeleted");
+
+                    b.HasIndex("LeadId")
+                        .HasDatabaseName("IX_LeadDocuments_LeadId");
+
+                    b.HasIndex("UploadedDate")
+                        .HasDatabaseName("IX_LeadDocuments_UploadedDate");
+
+                    b.ToTable("LeadDocuments", (string)null);
+                });
+
+            modelBuilder.Entity("Lead.Domain.Entities.LeadNote", b =>
+                {
+                    b.Property<int>("LeadNoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LeadNoteId"));
+
+                    b.Property<int>("CreatedBy")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("User ID who created the note");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasComment("Whether the note is deleted or not");
+
+                    b.Property<bool>("IsPrivate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasComment("Whether the note is private (visible only to creator)");
+
+                    b.Property<int>("LeadId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NoteText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Note content");
+
+                    b.Property<int>("UpdatedBy")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasComment("User ID who update the note");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()")
+                        .HasComment("Last modified date");
+
+                    b.HasKey("LeadNoteId");
+
+                    b.HasIndex("CreatedDate")
+                        .HasDatabaseName("IX_LeadNotes_CreatedDate");
+
+                    b.HasIndex("IsPrivate")
+                        .HasDatabaseName("IX_LeadNotes_IsPrivate");
+
+                    b.HasIndex("LeadId")
+                        .HasDatabaseName("IX_LeadNotes_LeadId");
+
+                    b.HasIndex("UpdatedDate")
+                        .HasDatabaseName("IX_LeadNotes_UpdatedDate");
+
+                    b.ToTable("LeadNotes", (string)null);
+                });
+
             modelBuilder.Entity("Lead.Domain.Entities.Leads", b =>
                 {
                     b.Property<int>("LeadId")
@@ -60,6 +322,12 @@ namespace Lead.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("Converted");
 
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DateOpened")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -97,6 +365,9 @@ namespace Lead.Infrastructure.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)")
                         .HasColumnName("First_Name");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -140,6 +411,12 @@ namespace Lead.Infrastructure.Migrations
                         .HasColumnType("nvarchar(30)")
                         .HasDefaultValue("New")
                         .HasColumnName("Status");
+
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ZipCode")
                         .IsRequired()

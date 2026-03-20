@@ -32,5 +32,17 @@ public class LeadMappingProfile : Profile
             .ForMember(dest => dest.FullAddress, opt => opt.Ignore())
             .ForMember(dest => dest.IsActive, opt => opt.Ignore())
             .ForMember(dest => dest.DaysOpen, opt => opt.Ignore());
+
+        CreateMap<LeadNote, LeadNoteResponse>()
+              .ForMember(dest => dest.NoteText, opt => opt.MapFrom(src => src.NoteText))
+            .ForMember(dest => dest.LeadNoteId, opt => opt.MapFrom(src => src.LeadNoteId))
+            .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.LeadId))
+            .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => src.CreatedDate));
+
+        CreateMap<LeadActivity, LeadActivityResponse>();
+
+        CreateMap<LeadDocument, LeadDocumentResponse>();
+
+
     }
 }

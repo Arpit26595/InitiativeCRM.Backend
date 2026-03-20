@@ -86,6 +86,14 @@ public class Leads
 
     [NotMapped]
     public int DaysOpen => (DateTime.UtcNow - DateOpened).Days;
+
+    public bool IsDeleted { get; set; } = false;
+
+    public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedDate { get; set; } = DateTime.UtcNow;
+
+    public int UpdatedBy { get; set; }
+    public int CreatedBy { get; set; }
 }
 
 
